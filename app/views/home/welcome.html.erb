@@ -1,2 +1,11 @@
 <h1>Home#welcome</h1>
 <p>Find me in app/views/home/welcome.html.erb</p>
+
+<!-- <iframe id="video" width="640" height="385" src="<%= @video %>" frameborder="1" allowfullscreen></iframe> -->
+<video id="video" controls width="320" height="240" src="<%= Rails.root %>/app/assets/images/cut.mp4">
+  <!-- <source src="/cut.mp4" type='video/mp4'> -->
+</video>
+<br>
+<input type="button" value="play" onclick="video_play()">
+<input type="button" value="pause" onclick="video_pause()">
+

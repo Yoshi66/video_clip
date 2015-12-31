@@ -1,5 +1,17 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :set_video, only: [:show, :edit, :update, :destroy, :make_clip]
+
+  def make_clip
+    p params
+    content = @video.content.url.gsub("?1451542062"," ").strip
+    p content
+    # content = @video.content
+    str_time = params[:value1]
+    end_time = params[:value2]
+    p "ffmpeg -i #{content} -ss #{str_time} -t #{end_time} -async 1 final.mp4"
+    #gsub or delete string letters after "?", and investigate why it puts ? at the end when saved
+    system("ffmpeg -i '#{Rails.root}/public#{content}' -ss '#{str_time}' -t '#{end_time}' -async 1 final.mp4")
+  end
 
   # GET /videos
   # GET /videos.json
@@ -69,6 +81,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:title, :video)
+      params.require(:video).permit(:title, :content)
     end
 end

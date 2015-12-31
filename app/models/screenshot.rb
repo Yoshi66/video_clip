@@ -1,6 +1,7 @@
-require 'rubygems'
-require 'youtube-dl.rb'
-require 'streamio-ffmpeg'
+@video.content.gsub(/?../,"")
+# require 'rubygems'
+# require 'youtube-dl.rb'
+# require 'streamio-ffmpeg'
 
 
 # video = YoutubeDL::Video.new("https://www.youtube.com/watch?v=m1pchpDD5EU")
@@ -14,14 +15,14 @@ require 'streamio-ffmpeg'
 # video.download
 # video.filename
 # p "#{video.options.store[:output]}"
-options = {
-  username: 'someone',
-  password: 'password1',
-  rate_limit: '50K',
-  output: "a.mp4",
-  format: :worst
-}
-YoutubeDL.download "https://www.youtube.com/watch?v=H7HmzwI67ec", options
+# options = {
+#   username: 'someone',
+#   password: 'password1',
+#   rate_limit: '50K',
+#   output: "a.mp4",
+#   format: :worst
+# }
+# YoutubeDL.download "https://www.youtube.com/watch?v=H7HmzwI67ec", options
 # p "a"
 # video = "some-file.mp4"
 # YoutubeDL.download "https://www.youtube.com/watch?v=H7HmzwI67ec", output: video

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :videos
+  resources :videos do
+    collection do
+      get :make_clip
+    end
+  end
 
   root 'home#welcome'
   # The priority is based upon order of creation: first created -> highest priority.

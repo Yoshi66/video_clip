@@ -15,10 +15,14 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :video %><br>
-    <%= f.file_field :video, :accept => 'video/*' %>
+    <%= f.label :content %><br>
+    <%= f.file_field :content %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+https://www.youtube.com/watch?v=nN6VR92V70M
+ffmpeg -i "https://www.youtube.com/watch?v=nN6VR92V70M" -vcodec copy -acodec copy -map 0:6 -map 0:7 "outputfile.ts"

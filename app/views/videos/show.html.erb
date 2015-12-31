@@ -1,4 +1,62 @@
 <p id="notice"><%= notice %></p>
 
+<%= video_tag @video.content, :size => "320x240", :controls => true, preload:"auto", id:"target_video"%>
+
+<input type="button" value="click to record" id="vd-Btn" />
+<!-- <input type="button" value="pause" id="pauseBtn" />
+<input type="button" value="stop" id="stopBtn" /> -->
+
+<!-- <video>
+  <source src="<%= @video.content %>" type='video/mp4;' />
+</video> -->
+<!-- <video>
+  <source src="<%= @video.content %>", :size => "320x240", :controls => true %></source>
+</video> -->
 <%= link_to 'Edit', edit_video_path(@video) %> |
 <%= link_to 'Back', videos_path %>
+
+
+<script>
+  $(document).ready(function(){
+    var video = document.getElementById("target_video");
+    var srt_time = 0
+    var end_time = 0
+    $("#vd-Btn").click(function () {
+      if(video.paused){
+        srt_time = video.currentTime;
+        video.play();
+        document.querySelector('input').value = "finish to clip"
+      }else{
+        end_time = video.currentTime;
+        video.pause();
+        document.querySelector('input').value = "click to record"
+        send_ajax(srt_time, end_time)
+      }
+    })
+    function send_ajax(value1,value2){
+      $.ajax({
+            url: "/videos/make_clip",
+            type: "GET",
+            data: {id: "<%= @video.id %>", value1,value2},
+            beforeSend: function(){
+              //$("body").find("*").attr("disabled", "disabled");
+            },
+            success : function(text) {
+              alert("success")
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+              alert("error");
+              // alert(xhr.status);
+            }
+          })
+    }
+    // $("#pauseBtn").click(function () {
+    //     video.pause();
+    // });
+    // $("#stopBtn").click(function () {
+    //     video.pause();
+    //     video.currentTime = 0;
+    //     video.load();
+    // });
+  })
+</script>

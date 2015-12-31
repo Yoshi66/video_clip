@@ -13,6 +13,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'streamio-ffmpeg'
 gem 'youtube-dl.rb'
+gem 'paperclip', '4.2.0'
+gem 'paperclip-av-transcoder'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
